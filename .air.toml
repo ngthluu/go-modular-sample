@@ -1,0 +1,21 @@
+# Config file for Air
+
+root = "."
+tmp_dir = "/tmp"
+
+[build]
+cmd = "go build -gcflags='all=-N -l' -o /tmp/main ./cmd/web"
+full_bin = "dlv exec /tmp/main --listen=:2345 --headless=true --api-version=2 --accept-multiclient --continue --log --"
+bin = "/tmp/main"
+include_ext = ["go"]
+exclude_regex = ["_test\\.go"]
+
+[log]
+time = true
+silent = true
+
+[color]
+main = "magenta"
+watcher = "cyan"
+build = "yellow"
+runner = "green"
