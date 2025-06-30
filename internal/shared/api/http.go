@@ -7,8 +7,8 @@ import (
 
 type Controller interface {
 	Path() string
-	Prepare(http.ResponseWriter, *http.Request) bool
-	Perform(http.ResponseWriter, *http.Request)
+	Setup(http.ResponseWriter, *http.Request) bool
+	Run(http.ResponseWriter, *http.Request)
 }
 
 func NewServeMux(routes []Controller) *http.ServeMux {
@@ -32,7 +32,7 @@ type _HttpControllerWrapper struct {
 }
 
 func (wrapper _HttpControllerWrapper) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	if wrapper.c.Prepare(w, r) {
-		wrapper.c.Perform(w, r)
+	if wrapper.c.Setup(w, r) {
+		wrapper.c.Run(w, r)
 	}
 }

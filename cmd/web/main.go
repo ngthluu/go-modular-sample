@@ -1,5 +1,7 @@
 package main
 
-func main() {
+import "go-modular-sample/config"
 
+func main() {
+	config.SetupAndRun()
 }
