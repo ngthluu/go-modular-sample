@@ -29,7 +29,7 @@ flowchart LR
   B --> F[Invoke and run app]
 ```
 
-### Execute phase
+### Execute phase (handle a HTTP request)
 
 ```mermaid
 flowchart LR
@@ -39,7 +39,7 @@ flowchart LR
     E --> D
     E --> F[Domain layer]
     F --> E
-    F --> G[Infrastructure layer]
+    F --> |Use DI container| G[Infrastructure layer]
   end
 
   A[cmd/api/main.go] --> B[HTTP server]
