@@ -1,6 +1,7 @@
 package config
 
 import (
+	"go-modular-sample/internal/shared/cache"
 	"go-modular-sample/internal/shared/db"
 	"go-modular-sample/internal/shared/module"
 
@@ -9,7 +10,8 @@ import (
 
 func GetAllInternalDeps() map[any]any {
 	return map[any]any{
-		new(db.Db): db.NewPostgreSqlDb(),
+		new(db.Db):       db.NewPostgreSqlDb(),
+		new(cache.Cache): cache.NewRedisCache(),
 	}
 }
 

@@ -10,6 +10,7 @@ Use docker to build and run this project.
 
 - [Uber Go FX](https://github.com/uber-go/fx): dependency injection system
 - [pq](https://github.com/lib/pq): PostgreSQL driver
+- [go-redis](https://github.com/redis/go-redis): Redis driver
 
 ## Source code structure
 
