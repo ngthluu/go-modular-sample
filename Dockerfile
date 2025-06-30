@@ -18,7 +18,7 @@ CMD ["air", "-c", ".air.toml"]
 ## Optimized build
 FROM base AS prod
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o /app/main ./cmd/web
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o /app/main ./cmd/api
 ## Runtime
 FROM alpine:latest AS runtime
 WORKDIR /root

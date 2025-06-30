@@ -12,6 +12,40 @@ Use docker to build and run this project.
 - [pq](https://github.com/lib/pq): PostgreSQL driver
 - [go-redis](https://github.com/redis/go-redis): Redis driver
 
+## How this project works
+
+### Setup phase
+
+```mermaid
+flowchart LR
+  subgraph B[Setup DI Container]
+    direction LR
+    C[Setup general dependencies]
+    D[Setup modules & its dependencies]
+    E[Setup lifecycle]
+  end
+
+  A[cmd/api/main.go] --> B
+  B --> F[Invoke and run app]
+```
+
+### Execute phase
+
+```mermaid
+flowchart LR
+  subgraph C[Module]
+    direction TB
+    D[Present layer] --> E[Application layer]
+    E --> D
+    E --> F[Domain layer]
+    F --> E
+    F --> G[Infrastructure layer]
+  end
+
+  A[cmd/api/main.go] --> B[HTTP server]
+  B --> C
+```
+
 ## Source code structure
 
 ```
